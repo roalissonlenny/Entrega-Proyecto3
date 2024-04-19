@@ -1,9 +1,19 @@
 from lib import*
 import sys
 
-print()
-Datos = input("¿Cual es el nombre del archivo a procesar?: ")
-print()
+def main():
+    nombre_archivo = input("Ingrese el nombre del archivo Excel (incluyendo la extensión .xlsx): ")
+    matriz_adyacencia = cargar_datos_desde_excel(nombre_archivo)
 
-allDatos = getDataXlsx(Datos)
+    if matriz_adyacencia:
+        grafo = Grafo(matriz_adyacencia)
+        print("Matriz de Adyacencia Ponderada:")
+        print(grafo)
+
+        aristas = mostrar_lista_relaciones(matriz_adyacencia)
+
+    grafo.dijkstra(1, 8)
+
+if __name__ == "__main__":
+    main()
 
